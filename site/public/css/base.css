@@ -1,0 +1,123 @@
+/* webfonts */
+@font-face {font-family: 'Capita-Light';src: url('webfonts/28436C_0_0.eot');src: url('webfonts/28436C_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/28436C_0_0.woff') format('woff'),url('webfonts/28436C_0_0.ttf') format('truetype');}
+@font-face {font-family: 'MuseoSans-500';src: url('webfonts/28436B_0_0.eot');src: url('webfonts/28436B_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/28436B_0_0.woff') format('woff'),url('webfonts/28436B_0_0.ttf') format('truetype');}
+@font-face {font-family: 'museo_sans900'; src: url('webfonts/museosans_900-webfont.eot'); src: url('webfonts/museosans_900-webfont.eot?#iefix') format('embedded-opentype'), url('webfonts/museosans_900-webfont.woff') format('woff'), url('webfonts/museosans_900-webfont.ttf') format('truetype'), url('webfonts/museosans_900-webfont.svg#museo_sans900') format('svg'); font-weight: normal; font-style: normal;}
+
+/* body */
+body { background-color:#381E38; color:#EC7264; margin:0; padding:0;}
+
+#nav-container {width:100%;}
+#nav-container ul {margin:0; padding:0; font-family: 'museo_sans900'; text-transform:uppercase; color:#271028; font-size:12px; letter-spacing:3px; overflow:hidden; white-space:nowrap;}
+#nav-container ul li {display:inline-block; padding:10px 16px; width:120px; margin:0; list-style-type:none; vertical-align: top;}
+
+
+#close-gallery-view {width:100%; height:100%;}
+#container {margin:0px auto; padding:5px;}
+
+.logo {background-color:#eb7163; position:relative;}
+.logo a {display:block; position:absolute; bottom:10px; font-size:12px; color: #381e38; font-family: 'MuseoSans-500'; text-transform:uppercase; letter-spacing:2px; text-decoration:none;}
+.logo a:hover {text-decoration:underline;}
+.logo a.left {left:10px;}
+.logo a.right {right:10px;}
+
+
+/* box */
+.box, .non-clickable-box {width:320px; margin:5px; opacity:0;}
+.box {cursor:pointer;}
+.non-clickable-box h1, box h1 {font-size:24px; display:block; padding:20px; margin:0; font-family: 'Capita-Light'; font-weight:normal; }
+.box p {font-size:14px; display:block; padding:10px; margin:0; color:#271028; font-family: 'MuseoSans-500'; z-index:3;}
+.box p span.client {font-family: 'museo_sans900'; text-transform:uppercase;}
+.lazy {background-color:#1b1b1b;}
+
+ul#filters li {cursor:pointer;}
+
+.overlay {position:absolute; width:320px; height:100%; top:0px; left:0px; background:url(../img/overlay.png) repeat top left; opacity:0; z-index:2;}
+
+/* display work */
+
+#show-work-container {position:absolute; top:44px; left:10px; background-color:#1B1B1B; padding:20px; display:none;}
+#show-work-image, #show-work-video {float:left; width:68%; margin-right:2%; overflow:hidden; display:none;}
+#show-work-image img, #show-work-image video {width:100%; height:auto; margin-top:2px;}
+#show-work-image img:first-child {margin-top:0px;}
+
+#show-work-text {float:right; width:30%; }
+#show-work-text #close {float:right; margin:0px 0px 10px 10px; width:34px; height:34px; background:url(../img/close.png) no-repeat center; cursor:pointer;}
+#show-work-text a {font-weight:bold; color:#EC5A58;}
+
+#show-work-text h2 {margin-top:0px; font-family: 'MuseoSans-500'; font-size:28px;}
+#show-work-text p {font-family: 'Capita-Light'; font-size:18px;}
+#show-work-text p span.date {font-family: 'museo_sans900'; text-transform:uppercase; font-size:14px; letter-spacing:3px; margin-bottom:12px; display:block;}
+
+#work-loading, #home-ajax-loader {position:absolute; top:50%; left:50%; width:24px; height:24px; margin:-12px 0px 0px -12px; z-index:5;}
+
+a.external-link {margin-top:1em; display:inline-block; padding:10px 16px; background-color:#EC7264; color:#1B1B1B !important; font-family: 'museo_sans900'; text-decoration:none; letter-spacing:3px; text-transform:uppercase; font-size:14px;}
+
+a.external-link:hover {background-color: #EC5A58;}
+
+/* colour swatches */
+.orange { background-color:#EC5A58; }
+.pink { background-color:#F094BD; }
+.salmon { background-color:#EC7264; }
+.rose { background-color:#CE5464; }
+.yellow { background-color:#FDF3AC; }
+.blue { background-color:#80B2C4; }
+.darkblue { background-color:#211D31; }
+.darkpurple { background-color:#381E38; }
+.lightpurple { background-color:#672335; }
+.mint {background-color:#9CC6B2; }
+.dark-grey { background-color:#1B1B1B; }
+
+/* text */
+.orange-text {color:#EC5A58;}
+.white-text {color:#fff !important;}
+
+/* links */
+p.white-text a {color:#fff !important;}
+
+/* Isotope Filtering */
+
+.isotope-item { z-index: 2; }
+.isotope-hidden.isotope-item { pointer-events: none; z-index: 1;}
+
+/* Isotope CSS3 transitions */
+
+.isotope,
+.isotope .isotope-item { -webkit-transition-duration: 0.8s; -moz-transition-duration: 0.8s; -ms-transition-duration: 0.8s; -o-transition-duration: 0.8s; transition-duration: 0.8s;}
+.isotope { -webkit-transition-property: height, width; -moz-transition-property: height, width; -ms-transition-property: height, width; -o-transition-property: height, width; transition-property: height, width; }
+.isotope .isotope-item {-webkit-transition-property: -webkit-transform, opacity;-moz-transition-property:-moz-transform, opacity;-ms-transition-property:-ms-transform, opacity;
+-o-transition-property:-o-transform, opacity;transition-property:transform, opacity;}
+
+/* mobile */
+
+#mobile-header {width:100%; height:34px; display:none; background-color:#eb7163;}
+#mobile-logo {float:left; background:url(../img/logo-mobile.png) no-repeat top left; width:181px; height:34px; background-size:181px 34px;}
+#mobile-nav-button {float:right; background:url(../img/nav-mobile.png) no-repeat top left; width:34px; height:34px; background-size:34px 34px;}
+
+
+/* media queries */
+
+
+@media only screen and (max-width: 340px)  {
+	.box, .non-clickable-box {width:300px; overflow:hidden;} 
+	.box img, .non-clickable-box img {margin-left:-10px;}
+}
+
+@media only screen and (max-width: 920px)  {
+	#mobile-header {display:block;}	
+	#nav-container {display:none;}
+	#nav-container ul {-webkit-text-size-adjust: none;}
+	#nav-container ul li {display:block; width:100% !important;}
+	#nav-container ul li.mobile-contact {display:block; width:100%;}
+}
+
+@media only screen and (min-width: 920px)  {
+	#nav-container {display:block !important;}
+}
+
+@media only screen and (max-width: 780px)  {
+	#show-work-container {height:auto !important;}
+	#show-work-image, #show-work-video {width:100% !important; height:auto !important; margin-right:0px; margin-bottom:1em;}
+	#show-work-image > img:last-child {display:none;}
+	#show-work-text {width:100%; float:none;}
+	#show-work-text > p:last-child {margin-bottom:0px;}
+}
