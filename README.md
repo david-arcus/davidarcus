@@ -1,2 +1,0 @@
-# davidarcus
-David Arcus portfolio
