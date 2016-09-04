@@ -10,7 +10,7 @@
     
     var vm = this;
 
-    vm.changeGradient = function(gradientType) {
+    vm.transition = function(gradientType) {
       
       $log.debug(gradientType);
       
