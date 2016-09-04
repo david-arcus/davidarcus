@@ -19,21 +19,40 @@
 
     /** @ngInject */
     function animatedGradientController() {
+      
       var vm = this;
       
-      var S = document.getElementById("grad").getElementsByTagName("stop") , SL = S.length;
-      var sunshineOffset=[0,90,95] , sunshineColor=['#ff0000','#ffc600','#ffffff'];
+      var background = document.getElementById('grad').getElementsByTagName('stop');
+      
+      var first = background[0];
+      var second = background[1];
+      
+      var loveCouple = ['#3a6186', '#89253e'];
+      
+      var sweetMorning = ['#FF5F6D', '#FFC371'];
+      
+      var transfile = ['#16BFFD', '#CB3066'];
+      
+      var greenAndBlue = ['#c2e59c', '#64b3f4'];    
 
-      var dayOffset=[0,60,100] , dayColor=['#0091a2','#6dfdff','#ffd16d'];
-
-      var tl = new TimelineMax({repeat:-1,yoyo:true}).add("Sunshine",2).add("Day",6)
-
-      for(var i=0;i<SL;i++){tl.to(S[i],2,{attr:{offset:sunshineOffset[i]+"%"},stopColor:sunshineColor[i]},"Sunshine")}
-      for(var i=0;i<SL;i++){tl.to(S[i],2,{attr:{offset:dayOffset[i]+"%"},stopColor:dayColor[i]},"Day")}
-
-
+      var tl = new TimelineMax({repeat:-1,yoyo:true});
+      
+      tl.to( first, 10, { stopColor:loveCouple[0] }, 'loveCouple');
+      tl.to( second, 10, { stopColor:loveCouple[1] }, 'loveCouple');
+      
+      tl.to( first, 10, { stopColor:sweetMorning[0] }, 'sweetMorning');
+      tl.to( second, 10, { stopColor:sweetMorning[1] }, 'sweetMorning');
+      
+      tl.to( first, 10, { stopColor:transfile[0] }, 'transfile');
+      tl.to( second, 10, { stopColor:transfile[1] }, 'transfile');
+      
+      tl.to( first, 10, { stopColor:greenAndBlue[0] }, 'greenAndBlue');
+      tl.to( second, 10, { stopColor:greenAndBlue[1] }, 'greenAndBlue');
+      
+      
       
     }
+    
   }
 
 })();
