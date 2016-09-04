@@ -27,30 +27,32 @@
       var vm = this;
 
       var Anim = { //animation settings
-          'duration': 1000,
-          'interval' : 1,
-          'stepUnit' : 1.0,
-          'currUnit' : 0.0
+        'duration': 500,
+        'interval' : 1,
+        'stepUnit' : 1.0,
+        'currUnit' : 0.0,
+        'delay' : 5000
       }
 
-      function Gradient(context, width, height){
-          this.ctx = context;
-          this.width = width;
-          this.height = height;
-          this.colorStops = [];
-          this.currentStop = 0;
+      function Gradient(context, width, height) {
+        this.ctx = context;
+        this.width = width;
+        this.height = height;
+        this.colorStops = [];
+        this.currentStop = 0;
       }
 
-      Gradient.prototype.addStop = function(pos, colors){
-          var stop = {'pos': pos, 'colors':colors, 'currColor': null}
-          this.colorStops.push(stop)
+      Gradient.prototype.addStop = function(pos, colors) {
+        var stop = {'pos': pos, 'colors':colors, 'currColor': null}
+        this.colorStops.push(stop)
       }
 
-      Gradient.prototype.updateStops = function(){ //interpolate colors of stops
+      Gradient.prototype.updateStops = function() { //interpolate colors of stops
+        
         var steps = Anim.duration / Anim.interval,
             step_u = Anim.stepUnit/steps,
             stopsLength = this.colorStops[0].colors.length - 1;
-
+        
         for(var i = 0; i < this.colorStops.length; i++){ //cycle through all stops in gradient
             var stop = this.colorStops[i],
                 startColor = stop.colors[this.currentStop],//get stop 1 color
@@ -71,7 +73,7 @@
         }
 
         // update current stop and animation units if interpolaiton is complete
-        if (Anim.currUnit >= 1.0){
+        if (Anim.currUnit >= 1.0) {
           Anim.currUnit = 0;
           if(this.currentStop < stopsLength){
             this.currentStop++;
@@ -83,7 +85,8 @@
         Anim.currUnit += step_u; //increment animation unit
       }
 
-      Gradient.prototype.draw = function(){
+      Gradient.prototype.draw = function() {
+        
         var gradient = ctx.createLinearGradient(0,this.width,this.height,0);
 
         for(var i = 0; i < this.colorStops.length; i++){
@@ -97,25 +100,56 @@
         this.ctx.clearRect(0,0,this.width,this.height);
         this.ctx.fillStyle = gradient;
         this.ctx.fillRect(0,0,this.width,this.height);
+        
       }
 
       var $width, $height, gradient,
           canvas = document.getElementById("grad"),
           ctx = canvas.getContext("2d"),
-          stopAColor = [
-              { 'r':'9', 'g':'117', 'b':'190' }, //blue
-              { 'r':'59', 'g':'160', 'b':'89' }, //green
-              //{ 'r':'230', 'g':'192', 'b':'39' }, //yellow
-              //{ 'r':'238', 'g':'30', 'b':'77' } //red
+          firstStop = [
+            { 'r':'40', 'g':'229', 'b':'154' },
+            { 'r':'255', 'g':'95', 'b':'109' },
+            { 'r':'22', 'g':'191', 'b':'253' },
+            { 'r':'194', 'g':'229', 'b':'156' },
+            { 'r':'58', 'g':'97', 'b':'134' }
           ],
-          stopBColor = [
-              { 'r':'205', 'g':'24', 'b':'75' }, //pink
-              { 'r':'33', 'g':'98', 'b':'155' }, //blue
-              //{ 'r':'64', 'g':'149', 'b':'69' }, //green
-              //{ 'r':'228', 'g':'171', 'b':'33' } //yellow
-          ];
+          secondStop = [
+            { 'r':'54', 'g':'222', 'b':'224' },
+            { 'r':'255', 'g':'195', 'b':'113' },
+            { 'r':'203', 'g':'48', 'b':'102' },
+            { 'r':'100', 'g':'179', 'b':'244' },
+            { 'r':'137', 'g':'37', 'b':'62' }
 
-      var updateUI = function(){
+          ]
+          
+//          loveCouple = [
+//              { 'r':'58', 'g':'97', 'b':'134' },
+//              { 'r':'137', 'g':'37', 'b':'62' }
+//          ],
+//          sweetMorning = [
+//              { 'r':'255', 'g':'95', 'b':'109' },
+//              { 'r':'255', 'g':'195', 'b':'113' }
+//          ],
+//          transfile = [
+//              { 'r':'22', 'g':'191', 'b':'253' },
+//              { 'r':'203', 'g':'48', 'b':'102' }
+//          ],
+//          greenAndBlue = [
+//              { 'r':'194', 'g':'229', 'b':'156' },
+//              { 'r':'100', 'g':'179', 'b':'244' }
+//          ],
+//          home = [
+//              { 'r':'40', 'g':'229', 'b':'154' },
+//              { 'r':'54', 'g':'222', 'b':'224' }
+//          ];
+      
+//          var loveCouple = ['#3a6186', '#89253e'];
+//          var sweetMorning = ['#FF5F6D', '#FFC371'];
+//          var transfile = ['#16BFFD', '#CB3066'];
+//          var greenAndBlue = ['#c2e59c', '#64b3f4'];
+//          var home = ['#28e59a', '#36dee0'];
+
+      var updateUI = function() {
         
         $width = $window.innerWidth;
         $height = $window.innerHeight;
@@ -124,17 +158,19 @@
         canvas.height = $height;
 
         gradient = new Gradient(ctx, canvas.width, canvas.height);
-        gradient.addStop(0, stopAColor);
-        gradient.addStop(1, stopBColor);
+        
+        gradient.addStop(0, firstStop);
+        gradient.addStop(1, secondStop);
 
       }
 
-      function animloop(){
+      function animloop() {
+        
         window.requestAnimationFrame(animloop);
         gradient.updateStops();
         gradient.draw();
+        
       };
-
 
       updateUI();
       
@@ -144,7 +180,7 @@
 
       //interpolation
       function lerp(a, b, u) {
-          return (1 - u) * a + u * b;
+        return (1 - u) * a + u * b;
       }
 
     }
