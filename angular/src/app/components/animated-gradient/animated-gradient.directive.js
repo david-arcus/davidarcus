@@ -91,8 +91,8 @@
             
             this.currentStop++;
 
-            paused = true; 
-            window.setTimeout(unPause, Anim.delay);
+//            paused = true; 
+//            window.setTimeout(unPause, Anim.delay);
             
           } else {
             
@@ -145,7 +145,7 @@
             { 'r':'137', 'g':'37', 'b':'62' },
             { 'r':'54', 'g':'222', 'b':'224' }
           ],
-          paused = true;
+          paused = false;
           
 //          loveCouple = [
 //              { 'r':'58', 'g':'97', 'b':'134' },
@@ -202,18 +202,18 @@
       };
       
       function unPause() {
-        paused = false;
-        animloop();
+//        paused = false;
+//        animloop();
       }
       
       function init() {
-        gradient.updateStops();
-        gradient.draw();
-        window.setTimeout(unPause, Anim.delay);
+//        gradient.updateStops();
+//        gradient.draw();
+//        window.setTimeout(unPause, Anim.delay);
       }
 
       updateUI();
-      init();
+      //init();
       
       window.requestAnimationFrame(animloop);
       
