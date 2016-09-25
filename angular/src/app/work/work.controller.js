@@ -6,9 +6,9 @@
     .controller('WorkController', WorkController);
 
   /** @ngInject */
-  function WorkController($log, $location) {
+  function WorkController($log, $scope, $rootScope) {
 
     var vm = this;
-
+    
   }
 })();

@@ -19,15 +19,20 @@
 
         elem.addClass(currentClass);
 
-        // $log.debug($route.current.$$route.controllerAs);
 
         $rootScope.$on('$routeChangeSuccess', function() {
 
-          elem.removeClass(currentClass);
+          // don't remove class if directive is used for ng-view as we need both classes applied simultaneously for animated transitions
+
+          // if element has class 'animated-gradient' though, remove the old class
+
+          if (elem.hasClass('animated-gradient')) {
+            elem.removeClass(currentClass);
+          }
+
           currentClass = $route.current.$$route.controllerAs;
           elem.addClass(currentClass);
 
-          //$log.debug($route.current.$$route.controllerAs);
 
         });
 
