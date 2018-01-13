@@ -8,7 +8,8 @@
   var grad = document.querySelector('.grad');
   var descriptions = document.getElementsByClassName('description');
   var dividers = document.getElementsByClassName('divider');
-  var videos = document.getElementsByTagName('video');
+  // var videos = document.getElementsByTagName('video');
+  var images = document.getElementsByClassName('lazy');
 
   var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
   var viewportThreshold = 0; // number of pixels beneath viewport before we load video content
@@ -37,13 +38,13 @@
 
       if (!scrollTimer) {
         if (now - lastScrollFireTime > (3 * minScrollTime)) {
-            Dave.checkVideos();   // fire immediately on first scroll
+            Dave.lazyLoadImages();   // fire immediately on first scroll
             lastScrollFireTime = now;
         }
         scrollTimer = setTimeout(function() {
             scrollTimer = null;
             lastScrollFireTime = new Date().getTime();
-            Dave.checkVideos();
+            Dave.lazyLoadImages();
         }, minScrollTime);
       }
 
@@ -136,6 +137,38 @@
         }
 
         console.log(video.src + ': ' + (video.paused == true ? 'paused ': 'playing'));
+
+      }
+
+    },
+
+    lazyLoadImages: function() {
+
+      // lazy load our images
+
+      console.log('---');
+
+      for (var i = 0; i < images.length; i++) {
+
+        var image = images[i];
+        var currentTop = image.getBoundingClientRect().top;
+        var elementHeight = image.clientHeight;
+
+        console.log(image.dataset.src + ': ' + currentTop);
+
+        // if image is within viewport threshold load it
+        if (currentTop < (viewportHeight + viewportThreshold) && currentTop > (0 - elementHeight)) {
+
+          image.src = image.dataset.src;
+          image.classList.add('visible');
+
+          console.log(image.dataset.src + ': image in frame');
+
+
+        } else {
+
+
+        }
 
       }
 
