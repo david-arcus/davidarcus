@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Brunch</title>
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Yantramanav:400,900" rel="stylesheet">
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <div class="noise"></div>
+
+  <div class="container">
+    <!-- fixed elements -->
+    <div class="dave visible"></div>
+    <div class="logo visible"></div>
+    <div class="grad"></div>
+    <div class="paisley"></div>
+    <!-- /fixed elements -->
+
+    <!-- document flow elements -->
+    <div class="work">
+      <div class="description">
+        <div class="content">
+          <h2>Hello</h2>
+
+          <p>ffmpeg -i hp-wattbikes-high.mov -vf scale=854x480 -b:v 1M -vcodec libx264 -pix_fmt yuv420p -preset slow -crf 28 -an output.mp4</p>
+
+          <p>ffmpeg -i hp-wattbikes-high.mov -vf scale=854x480 -b:v 1M -c:v libvpx-vp9 -pix_fmt yuv420p -quality good -speed 0 -crf 35 -an hp-wattbikes.webm</p>
+<!--
+          <p>I help creative teams turn a digital idea into reality by suggesting the right tools to use, then designing, coding or building whatever's needed.</p>
+
+          <p>I can design and build websites, apps, animations, games, AR things, Arduino-powered devices or anything else that needs making.</p>
+
+          <p>I've made some award-winning work for companies across Europe and Australasia, and my personal projects have been viewed by close to two million&nbsp;people.</p> -->
+
+        </div>
+        <div class="divider"></div>
+      </div>
+      <div class="image"><img src="https://unsplash.it/900/499?random" class="visible" /></div>
+
+      <div class="description">
+        <div class="content">
+          <h2>Emirates Team New&nbsp;Zealand</h2>
+          <p><span class="client">Hewlett Packard</span>&nbsp;I built the software for the HP Emirates Team New Zealand activation, running in central Auckland during the America's Cup race. The activation visualised the amount of power generated as people cycled on Wattbikes.</p><p>The experience was designed to give you a sense of what it's like to be a 'Cyclor' on the Team New Zealand boat, and to see how much energy you could produce compared to the boys on the boat.</p>
+        </div>
+        <div class="divider"></div>
+      </div>
+      <div class="video">
+        <!-- <video src="/videos/hp-wattbikes.webm" preload="none" playsinline loop muted> -->
+        <video src="/videos/hp-wattbikes.mp4" preload="none" playsinline loop muted>
+      </div>
+
+      <div class="description">
+        <div class="content">
+          <h2>Child Replacement Programme</h2>
+          <p><span class="client">Pedigree</span>&nbsp;I built the web platform for the Pedigree 'Child Replacement Programme'. Aimed at parents whose kids had moved out, the tool allowed empty-nesters to specify details of their departed child and be matched with a dog at a local shelter that needed a new home.</p>
+        </div>
+        <div class="divider"></div>
+      </div>
+      <div class="video">
+        <video src="/videos/pedigree-crp.mp4" preload="none" playsinline loop muted>
+      </div>
+
+      <div class="description">
+        <div class="content">
+          <h2>Petswitch</h2>
+          <p><span class="client">My projects</span>&nbsp;In 2012 I built Petswitch, a tool that allows you to overlay your face onto your pet's. The results were both horrifying and hilarious. Since then the site's been viewed by over 500,000 people, and was <a href="https://www.cnet.com/news/petswitch-give-a-pet-your-own-face/">featured on CNET</a>.</p>
+        </div>
+        <div class="divider"></div>
+      </div>
+      <div class="video">
+        <video src="/videos/petswitch.mp4" preload="none" playsinline loop muted>
+      </div>
+
+      <div class="description">
+        <div class="content">
+          <h2>Found</h2>
+          <p><span class="client">Pedigree</span>&nbsp;Nam vel tincidunt leo, id vehicula orci. Nunc vestibulum nec orci ut suscipit. Fusce iaculis pretium vehicula. Curabitur leo nisi, semper ac ornare id, venenatis quis orci.</p>
+        </div>
+        <div class="divider"></div>
+      </div>
+      <div class="video">
+        <video src="/videos/found.mp4" preload="none" playsinline loop muted>
+      </div>
+
+      <div class="description">
+        <div class="content">
+          <h2>Home turf</h2>
+          <p><span class="client">BNZ</span>&nbsp;Praesent ligula elit, elementum vel lacinia eget, tempor et nisi. Etiam eu nisl sollicitudin, ullamcorper elit et, dapibus eros. Nullam id nulla ultrices, cursus felis a, gravida nulla.</p>
+        </div>
+        <div class="divider"></div>
+      </div>
+      <div class="video">
+        <video src="/videos/home-turf.mp4?v=2" preload="none" playsinline loop muted>
+      </div>
+
+      <div class="description">
+        <div class="content">
+          <h2>Shred my mortgage</h2>
+          <p><span class="client">BNZ</span>&nbsp;Donec neque justo, venenatis at aliquet auctor, viverra imperdiet nunc. Nulla pulvinar molestie purus at ultrices. Nam eu eleifend eros. Morbi mattis et dolor sed scelerisque.</p>
+        </div>
+      </div>
+      <div class="video">
+        <video src="/videos/shred.mp4" preload="none" playsinline loop muted>
+      </div>
+
+      <div class="description">
+        <div class="content">
+          <h2>Breaking Bad</h2>
+          <p><span class="client">My projects</span>&nbsp;Donec neque justo, venenatis at aliquet auctor, viverra imperdiet nunc. Nulla pulvinar molestie purus at ultrices. Nam eu eleifend eros. Morbi mattis et dolor sed scelerisque.</p>
+        </div>
+      </div>
+      <div class="video">
+        <video src="/videos/breaking-bad.mp4" preload="none" playsinline loop muted>
+      </div>
+
+
+    </div>
+
+  <!-- /document flow elements -->
+  </div>
+
+  <script src="/app.js"></script>
+  <script>require('initialize');</script>
+</body>
