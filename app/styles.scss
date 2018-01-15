@@ -7,7 +7,7 @@ body {
 
   .container {
     overflow:auto;
-    
+
 
     a.brutal-link {
 
@@ -307,6 +307,30 @@ body {
           object-fit: cover;
         }
 
+      }
+
+      .image {
+        position: relative;
+        .appstores, .selfiestix-phone {
+          position: absolute;
+
+        }
+
+        .appstores {
+          top:20px;
+          left:20px;
+          width:150px;
+        }
+
+        .selfiestix-phone {
+          bottom:0px;
+          right:30px;
+          width:170px;
+
+          img {
+            display: block;
+          }
+        }
       }
 
     }
