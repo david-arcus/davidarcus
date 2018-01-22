@@ -186,9 +186,9 @@ body {
             margin-top:0;
             margin-bottom:0.6em;
 
-            @media (max-width:550px) {
-              font-size:0.8em;
-            }
+            // @media (max-width:550px) {
+            //   font-size:0.8em;
+            // }
 
             a {
               color:#fff;
@@ -246,7 +246,7 @@ body {
             transform: none;
             width:100%;
             box-sizing: border-box;
-            padding:30px;
+            padding:40px;
           }
 
         }
