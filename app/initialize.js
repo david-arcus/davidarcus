@@ -9,6 +9,7 @@
   var descriptions = document.getElementsByClassName('description');
   var dividers = document.getElementsByClassName('divider');
   // var videos = document.getElementsByTagName('video');
+  var imageContainers = document.getElementsByClassName('image');
   var images = document.getElementsByClassName('lazy');
 
   var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -34,7 +35,7 @@
 
     runOnScroll:function() {
       // console.log('scrolling');
-      // console.log(document.body.scrollTop);
+      // console.log(window.pageYOffset);
 
       if (!scrollTimer) {
         if (now - lastScrollFireTime > (3 * minScrollTime)) {
@@ -50,6 +51,8 @@
 
       scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
+      console.log(scrollTop);
+
       if (!scrolling) {
 
         if (scrollTop > 0) {
@@ -60,6 +63,7 @@
 
           for (var i = 0; i< descriptions.length; i++) {
             descriptions[i].classList.add('visible');
+            imageContainers[i].classList.add('visible');
           }
 
           scrolling = true;
@@ -86,9 +90,13 @@
 
           for (var i = 0; i< descriptions.length; i++) {
             descriptions[i].classList.remove('visible');
+            imageContainers[i].classList.remove('visible');
           }
 
           scrolling = false;
+
+          images[0].classList.remove('visible');
+
           console.log('back to top');
         } else if (scrollTop < 0) {
           scrolling = false;
@@ -154,7 +162,7 @@
         var currentTop = image.getBoundingClientRect().top;
         var elementHeight = image.clientHeight;
 
-        console.log(image.dataset.src + ': ' + currentTop);
+        // console.log(image.dataset.src + ': ' + currentTop);
 
         // if image is within viewport threshold load it
         if (currentTop < (viewportHeight + viewportThreshold) && currentTop > (0 - elementHeight)) {
