@@ -5,7 +5,23 @@
   <title>David Arcus &ndash; Creative Technologist</title>
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Yantramanav:400,900" rel="stylesheet">
   <link rel="stylesheet" href="/app.css">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <meta name="google-site-verification" content="XDK0ojsrvEC8UsVVFmluISMt-Vf9rudhHHdVOLSN8ck" />
+  <!-- Search Engine -->
+  <meta name="description" content="I help creative teams turn a digital idea into reality by suggesting the right tools to use, then designing, coding or building whatever's needed.">
+  <meta name="image" content="https://davidarc.us/images/fb.png">
+  <!-- Schema.org for Google -->
+  <meta itemprop="name" content="David Arcus – Creative Technologist">
+  <meta itemprop="description" content="I help creative teams turn a digital idea into reality by suggesting the right tools to use, then designing, coding or building whatever's needed.">
+  <meta itemprop="image" content="https://davidarc.us/images/fb.png">
+  <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+  <meta name="og:title" content="David Arcus – Creative Technologist">
+  <meta name="og:description" content="I help creative teams turn a digital idea into reality by suggesting the right tools to use, then designing, coding or building whatever's needed.">
+  <meta name="og:image" content="https://davidarc.us/images/fb.png">
+  <meta name="og:url" content="https://davidarc.us">
+  <meta name="og:site_name" content="David Arcus – Creative Technologist">
+  <meta name="og:locale" content="en_NZ">
+  <meta name="og:type" content="website">
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23711921-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -19,10 +35,10 @@
 
   <div class="container">
     <!-- fixed elements -->
+    <div class="mobile-landing"></div>
     <div class="dave visible"></div>
     <div class="logo visible"></div>
     <div class="grad"></div>
-    <div class="paisley"></div>
     <!-- /fixed elements -->
 
     <!-- document flow elements -->
@@ -30,16 +46,11 @@
       <div class="description">
         <div class="content">
           <h2>Hello</h2>
-
-          <!-- <p>ffmpeg -i hp-wattbikes-high.mov -vf scale=854x480 -b:v 1M -vcodec libx264 -pix_fmt yuv420p -preset slow -crf 28 -an output.mp4</p>
-
-          <p>ffmpeg -i hp-wattbikes-high.mov -vf scale=854x480 -b:v 1M -c:v libvpx-vp9 -pix_fmt yuv420p -quality good -speed 0 -crf 35 -an hp-wattbikes.webm</p> -->
-
           <p>I help creative teams turn a digital idea into reality by suggesting the right tools to use, then designing, coding or building whatever's needed.</p>
 
           <p>I can design and build websites, apps, animations, games, AR things, Arduino-powered devices or anything else that needs making.</p>
 
-          <p>I've made some award-winning work for companies across Europe and Australasia, and my personal projects have been viewed by close to two million&nbsp;people.</p>
+          <p>I've made some award-winning work for companies across Europe and Australasia, and my personal projects have been viewed by over a million&nbsp;people.</p>
 
           <a class="brutal-link" href="https://www.linkedin.com/in/darcus/" target="_blank"><img src="/images/more-about-me.svg" /></a>
 
@@ -47,7 +58,7 @@
         <div class="divider"></div>
       </div>
       <div class="image">
-        <img data-src="/images/nerd.jpg" class="lazy" />
+        <img src="/images/nerd.jpg" id="first-image" />
       </div>
 
       <div class="description">

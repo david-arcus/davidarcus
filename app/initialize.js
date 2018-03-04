@@ -4,13 +4,14 @@
   var home = document.querySelector('.home');
   var logo = document.querySelector('.logo');
   var dave = document.querySelector('.dave');
-  var paisley = document.querySelector('.paisley');
+  // var paisley = document.querySelector('.paisley');
   var grad = document.querySelector('.grad');
   var descriptions = document.getElementsByClassName('description');
   var dividers = document.getElementsByClassName('divider');
   // var videos = document.getElementsByTagName('video');
-  var imageContainers = document.getElementsByClassName('image');
+  // var imageContainers = document.getElementsByClassName('image');
   var images = document.getElementsByClassName('lazy');
+  var firstImage = document.getElementById('first-image');
 
   var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
   var viewportThreshold = 0; // number of pixels beneath viewport before we load video content
@@ -30,7 +31,9 @@
 
     init:function() {
       document.addEventListener('DOMContentLoaded', this.generateDividers);
-      window.addEventListener('scroll', this.runOnScroll);
+      document.addEventListener('scroll', this.runOnScroll);
+      document.addEventListener('touchmove', this.runOnScroll, false);
+
     },
 
     runOnScroll:function() {
@@ -51,7 +54,7 @@
 
       scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
-      console.log(scrollTop);
+      // console.log(scrollTop);
 
       if (!scrolling) {
 
@@ -59,11 +62,11 @@
           grad.classList.add('half', 'behind');
           logo.classList.remove('visible');
           dave.classList.remove('visible');
-          paisley.classList.add('visible');
+          firstImage.classList.add('mobile-fade');
 
           for (var i = 0; i< descriptions.length; i++) {
             descriptions[i].classList.add('visible');
-            imageContainers[i].classList.add('visible');
+            // imageContainers[i].classList.add('visible');
           }
 
           scrolling = true;
@@ -82,15 +85,15 @@
 
       } else {
 
-        if (scrollTop == 0) {
+        if (scrollTop <= 0) {
           grad.classList.remove('half', 'behind');
           logo.classList.add('visible');
           dave.classList.add('visible');
-          paisley.classList.remove('visible');
+          firstImage.classList.remove('mobile-fade');
 
           for (var i = 0; i< descriptions.length; i++) {
             descriptions[i].classList.remove('visible');
-            imageContainers[i].classList.remove('visible');
+            // imageContainers[i].classList.remove('visible');
           }
 
           scrolling = false;
@@ -154,7 +157,7 @@
 
       // lazy load our images
 
-      console.log('---');
+      // console.log('---');
 
       for (var i = 0; i < images.length; i++) {
 
@@ -170,11 +173,7 @@
           image.src = image.dataset.src;
           image.classList.add('visible');
 
-          console.log(image.dataset.src + ': image in frame');
-
-
-        } else {
-
+          // console.log(image.dataset.src + ': image in frame');
 
         }
 
