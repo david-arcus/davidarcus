@@ -1,38 +1,67 @@
 (function() {
   'use strict'
 
-  var home = document.querySelector('.home');
-  var logo = document.querySelector('.logo');
-  var dave = document.querySelector('.dave');
-  // var paisley = document.querySelector('.paisley');
-  var grad = document.querySelector('.grad');
-  var descriptions = document.getElementsByClassName('description');
-  var dividers = document.getElementsByClassName('divider');
-  // var videos = document.getElementsByTagName('video');
-  // var imageContainers = document.getElementsByClassName('image');
-  var images = document.getElementsByClassName('lazy');
-  var firstImage = document.getElementById('first-image');
+  var Lazy = {
+    viewportHeight:     Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
+    viewportThreshold:  0, // number of pixels beneath viewport before we load video content
+    scrollTimer:        false,
+    lastScrollFireTime: 0,
+    scrolling:          false,
+    scrollTop:          0,
+    minScrollTime:      200,
+    now:                new Date().getTime()
+  };
 
-  var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-  var viewportThreshold = 0; // number of pixels beneath viewport before we load video content
-  var scrollTimer, lastScrollFireTime = 0;
-  var scrolling = false;
-  var scrollTop;
-  var minScrollTime = 200;
-  var now = new Date().getTime();
+  var Elements = {
 
-  //          var loveCouple = ['#3a6186', '#89253e'];
-  //          var sweetMorning = ['#FF5F6D', '#FFC371'];
-  //          var transfile = ['#16BFFD', '#CB3066'];
-  //          var greenAndBlue = ['#c2e59c', '#64b3f4'];
-  //          var home = ['#28e59a', '#36dee0'];
+    overlay:      document.querySelector('.overlay'),
+    logo:         document.querySelector('.logo'),
+    dave:         document.querySelector('.dave'),
+    container:    document.querySelector('.container'),
+    // playVideos:   document.getElementsByClassName('play-video'),
+    grad:         document.querySelector('.grad'),
+    descriptions: document.getElementsByClassName('description'),
+    dividers:     document.getElementsByClassName('divider'),
+    images:       document.getElementsByClassName('lazy'),
+    firstImage:   document.getElementById('first-image')
+
+  };
 
   var Dave = {
 
     init:function() {
+
       document.addEventListener('DOMContentLoaded', this.generateDividers);
       document.addEventListener('scroll', this.runOnScroll);
       document.addEventListener('touchmove', this.runOnScroll, false);
+
+      // var modalActive = false;
+      //
+      // for (var i = 0; i < Elements.playVideos.length; i++) {
+      //   Elements.playVideos[i].addEventListener('click', function() {
+      //
+      //     Elements.container.classList.add('reduced');
+      //     Elements.grad.classList.add('reduced');
+      //     Elements.overlay.classList.add('show');
+      //     modalActive = true;
+      //
+      //   });
+      // }
+      //
+      // Elements.overlay.addEventListener('click', function() {
+      //
+      //   if (modalActive) {
+      //
+      //     setTimeout(function() {
+      //       Elements.grad.classList.remove('reduced');
+      //     },800);
+      //     Elements.container.classList.remove('reduced');
+      //     Elements.overlay.classList.remove('show');
+      //     modalActive = false;
+      //
+      //   }
+      //
+      // });
 
     },
 
@@ -40,36 +69,37 @@
       // console.log('scrolling');
       // console.log(window.pageYOffset);
 
-      if (!scrollTimer) {
-        if (now - lastScrollFireTime > (3 * minScrollTime)) {
+      if (!Lazy.scrollTimer) {
+        // console.log('not');
+        if (Lazy.now - Lazy.lastScrollFireTime > (3 * Lazy.minScrollTime)) {
             Dave.lazyLoadImages();   // fire immediately on first scroll
-            lastScrollFireTime = now;
+            Lazy.lastScrollFireTime = Lazy.now;
         }
-        scrollTimer = setTimeout(function() {
-            scrollTimer = null;
-            lastScrollFireTime = new Date().getTime();
+        Lazy.scrollTimer = setTimeout(function() {
+            Lazy.scrollTimer = null;
+            Lazy.lastScrollFireTime = new Date().getTime();
             Dave.lazyLoadImages();
-        }, minScrollTime);
+        }, Lazy.minScrollTime);
       }
 
-      scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      Lazy.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
       // console.log(scrollTop);
 
-      if (!scrolling) {
+      if (!Lazy.scrolling) {
 
-        if (scrollTop > 0) {
-          grad.classList.add('half', 'behind');
-          logo.classList.remove('visible');
-          dave.classList.remove('visible');
-          firstImage.classList.add('mobile-fade');
+        if (Lazy.scrollTop > 0) {
+          Elements.grad.classList.add('half', 'behind');
+          Elements.logo.classList.remove('visible');
+          Elements.dave.classList.remove('visible');
+          Elements.firstImage.classList.add('mobile-fade');
 
-          for (var i = 0; i< descriptions.length; i++) {
-            descriptions[i].classList.add('visible');
+          for (var i = 0; i< Elements.descriptions.length; i++) {
+            Elements.descriptions[i].classList.add('visible');
             // imageContainers[i].classList.add('visible');
           }
 
-          scrolling = true;
+          Lazy.scrolling = true;
           //console.log('scrolling')
           //
           // for (var i = 0; i< dividers.length; i++) {
@@ -85,69 +115,25 @@
 
       } else {
 
-        if (scrollTop <= 0) {
-          grad.classList.remove('half', 'behind');
-          logo.classList.add('visible');
-          dave.classList.add('visible');
-          firstImage.classList.remove('mobile-fade');
+        if (Lazy.scrollTop <= 0) {
+          Elements.grad.classList.remove('half', 'behind');
+          Elements.logo.classList.add('visible');
+          Elements.dave.classList.add('visible');
+          Elements.firstImage.classList.remove('mobile-fade');
 
-          for (var i = 0; i< descriptions.length; i++) {
-            descriptions[i].classList.remove('visible');
+          for (var i = 0; i< Elements.descriptions.length; i++) {
+            Elements.descriptions[i].classList.remove('visible');
             // imageContainers[i].classList.remove('visible');
           }
 
-          scrolling = false;
+          Lazy.scrolling = false;
 
-          images[0].classList.remove('visible');
+          Elements.images[0].classList.remove('visible');
 
           console.log('back to top');
-        } else if (scrollTop < 0) {
-          scrolling = false;
+        } else if (Lazy.scrollTop < 0) {
+          Lazy.scrolling = false;
         }
-
-      }
-
-    },
-
-    checkVideos:function() {
-
-      // lazy load our videos
-
-      console.log('---');
-
-      for (var i = 0; i < videos.length; i++) {
-
-        var video = videos[i];
-        var currentTop = video.getBoundingClientRect().top;
-        var elementHeight = video.clientHeight;
-
-        console.log(video.src + ': ' + currentTop);
-
-        // if video is within viewport threshold play it
-        if (currentTop < (viewportHeight + viewportThreshold) && currentTop > (0 - elementHeight)) {
-
-          // console.log(video.src + ': video in frame');
-
-          if (video.paused) {
-
-            video.play();
-
-          }
-
-          //video.classList.addClass('visible');
-
-        } else {
-
-          if (!video.paused && video.currentTime > 0) {
-
-            // console.log(video.src + ': video paused');
-            video.pause();
-
-          }
-
-        }
-
-        console.log(video.src + ': ' + (video.paused == true ? 'paused ': 'playing'));
 
       }
 
@@ -159,16 +145,16 @@
 
       // console.log('---');
 
-      for (var i = 0; i < images.length; i++) {
+      for (var i = 0; i < Elements.images.length; i++) {
 
-        var image = images[i];
+        var image = Elements.images[i];
         var currentTop = image.getBoundingClientRect().top;
         var elementHeight = image.clientHeight;
 
         // console.log(image.dataset.src + ': ' + currentTop);
 
         // if image is within viewport threshold load it
-        if (currentTop < (viewportHeight + viewportThreshold) && currentTop > (0 - elementHeight)) {
+        if (currentTop < (Lazy.viewportHeight + Lazy.viewportThreshold) && currentTop > (0 - elementHeight)) {
 
           image.src = image.dataset.src;
           image.classList.add('visible');
@@ -183,7 +169,7 @@
 
     generateDividers:function() {
 
-      for (var i = 0; i< dividers.length; i++) {
+      for (var i = 0; i< Elements.dividers.length; i++) {
 
         // generate distinct number for each property of the squares
 
@@ -194,7 +180,7 @@
         for (var j = 0; j<3; j++) {
           var square = document.createElement('div');
 
-          dividers[i].appendChild(square);
+          Elements.dividers[i].appendChild(square);
           square.style.width = size[j] + 'px';
           square.style.height = size[j] + 'px';
           square.style.opacity = opacity[j];
