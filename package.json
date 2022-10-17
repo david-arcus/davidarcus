@@ -16,7 +16,7 @@
     "clean-css-brunch": "^2",
     "html-pages-brunch": "^2.6.0",
     "imagemin-brunch": "^1.0.1",
-    "sass-brunch": "^2.10.4",
+    "sass-brunch": "^2.10.8",
     "uglify-js-brunch": "^2"
   }
 }
