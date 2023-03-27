@@ -13,10 +13,11 @@
   "devDependencies": {
     "auto-reload-brunch": "^2",
     "brunch": "^2",
-    "clean-css-brunch": "^2",
-    "html-pages-brunch": "^2.6.0",
-    "imagemin-brunch": "^1.0.1",
+    "clean-css-brunch": "^2.10.0",
+    "html-pages-brunch": "^2.8.0",
+    "imagemin-brunch": "^1.1.0",
     "sass-brunch": "^2.10.8",
+    "terser-brunch": "^4.1.0",
     "uglify-js-brunch": "^2"
   }
 }
