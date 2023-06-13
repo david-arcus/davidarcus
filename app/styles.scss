@@ -324,6 +324,58 @@ body {
         position:relative;
         // background-color:#000;
 
+        &.f1-viz {
+          .f1-viz-logo, .qualifying, .melbourne, .positions, .playhead, .telemetry {
+            position: absolute;
+            pointer-events: none;
+            img {
+              width:100%;
+              height:auto;
+            }
+          }
+
+          .f1-viz-logo {
+            top:20px;
+            left:30px;
+            width:6%;
+            @media (max-width:898px) {
+              left:20px;
+            }
+          }
+          .qualifying {
+            top:20px;
+            left:50%;
+            transform:translateX(-50%);
+            width:23%;
+          }
+          .melbourne {
+            top:20px;
+            right:20px;
+            width:23%;
+          }
+          .positions {
+            top:50%;
+            left:30px;
+            transform:translateY(-40%);
+            width:18%;
+            max-width:140px;
+            @media (max-width:898px) {
+              left:20px;
+            }
+          }
+          .playhead {
+            bottom:20px;
+            left:50%;
+            width:8%;
+            transform:translateX(-50%);
+          }
+          .telemetry {
+            right:20px;
+            bottom:20px;
+            width:23%;
+          }
+        }
+
         @media (max-width:898px) {
           width:100%;
         }
